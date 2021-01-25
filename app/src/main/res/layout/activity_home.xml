@@ -19,6 +19,8 @@
 
     <Button
         android:id="@+id/starter_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:layout_width="405dp"
         android:layout_height="106dp"
         android:layout_marginStart="8dp"
@@ -28,9 +30,11 @@
         android:fontFamily="@font/anton"
         android:paddingBottom="0dp"
         android:text="@string/starter_button"
+        android:textAlignment="viewStart"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         android:textSize="36sp"
-        app:icon="@drawable/ic_android_black_24dp"
+        app:icon="@drawable/ic_salad"
+        app:iconPadding="32dp"
         app:layout_constraintBottom_toTopOf="@+id/dish_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.51"
@@ -38,6 +42,8 @@
 
     <Button
         android:id="@+id/dish_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:layout_width="405dp"
         android:layout_height="106dp"
         android:layout_marginStart="8dp"
@@ -45,14 +51,18 @@
         android:backgroundTint="@color/orange"
         android:fontFamily="@font/anton"
         android:text="@string/dish_button"
+        android:textAlignment="viewStart"
         android:textSize="36sp"
-        app:icon="@drawable/ic_android_black_24dp"
+        app:icon="@drawable/ic_burger"
+        app:iconPadding="32dp"
         app:layout_constraintBottom_toTopOf="@+id/dessert_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/dessert_button"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:layout_width="405dp"
         android:layout_height="106dp"
         android:layout_marginStart="8dp"
@@ -61,8 +71,10 @@
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/anton"
         android:text="@string/dessert_button"
+        android:textAlignment="viewStart"
         android:textSize="36sp"
-        app:icon="@drawable/ic_android_black_24dp"
+        app:icon="@drawable/ic_cupcake"
+        app:iconPadding="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
