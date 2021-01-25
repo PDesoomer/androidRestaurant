@@ -4,19 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:onClick="onClick"
     tools:context=".HomeActivity">
-
-    <EditText
-        android:id="@+id/pageTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="@string/pageTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/starter_button"
@@ -29,7 +17,6 @@
         android:fontFamily="@font/anton"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:onClick="onClick"
         android:paddingBottom="0dp"
         android:text="@string/starter_button"
         android:textAlignment="viewStart"
@@ -52,7 +39,6 @@
         android:fontFamily="@font/anton"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:onClick="onClick"
         android:text="@string/dish_button"
         android:textAlignment="viewStart"
         android:textSize="36sp"
@@ -73,7 +59,6 @@
         android:fontFamily="@font/anton"
         android:insetTop="0dp"
         android:insetBottom="0dp"
-        android:onClick="onClick"
         android:text="@string/dessert_button"
         android:textAlignment="viewStart"
         android:textSize="36sp"
