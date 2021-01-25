@@ -4,4 +4,5 @@
     <string name="starter_button">Starter</string>
     <string name="dish_button">Dish</string>
     <string name="dessert_button">Dessert</string>
+    <string name="starter_page_title">Starter page</string>
 </resources>
