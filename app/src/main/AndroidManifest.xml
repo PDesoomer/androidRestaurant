@@ -12,9 +12,9 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".DishDetailActivity"></activity>
-        <activity android:name=".DessertActivity" />
-        <activity android:name=".DishActivity" />
-        <activity android:name=".StarterActivity" />
+        <activity android:name=".starter.DessertActivity" />
+        <activity android:name=".starter.DishActivity" />
+        <activity android:name=".starter.StarterActivity" />
         <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityHomeBinding
+import fr.isen.desoomer.androidrestaurant.starter.DessertActivity
+import fr.isen.desoomer.androidrestaurant.starter.DishActivity
+import fr.isen.desoomer.androidrestaurant.starter.StarterActivity
 
 private lateinit var binding: ActivityHomeBinding;
 

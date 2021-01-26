@@ -1,4 +1,4 @@
-package fr.isen.desoomer.androidrestaurant
+package fr.isen.desoomer.androidrestaurant.starter
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -7,7 +7,6 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-import fr.isen.desoomer.androidrestaurant.data.Dish
 import fr.isen.desoomer.androidrestaurant.data.DishDetailData
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityStarterBinding
 import org.json.JSONException
