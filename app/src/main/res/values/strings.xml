@@ -5,4 +5,7 @@
     <string name="dish_button">Dish</string>
     <string name="dessert_button">Dessert</string>
     <string name="starter_page_title">Starter page</string>
+    <string name="app_title">STEAKHOUSE</string>
+    <string name="adresseText">12 Rue de la soie</string>
+    <string name="descriptionPlat">Dish description</string>
 </resources>

@@ -1,19 +1,22 @@
 package fr.isen.desoomer.androidrestaurant
 
+import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import fr.isen.desoomer.androidrestaurant.databinding.ActivityStarterBinding
 import fr.isen.desoomer.androidrestaurant.databinding.CardBinding
 
-class StarterRecycleViewAdapter(private val dataSet: List<String>):
+class StarterRecycleViewAdapter(private val dataSet: List<String>, private val ct: Context):
     RecyclerView.Adapter<StarterRecycleViewAdapter.ViewHolder>() {
 
     class ViewHolder(binding: CardBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.starterCardTitle
+        val container: ConstraintLayout = binding.root;
     }
+
+
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -25,6 +28,13 @@ class StarterRecycleViewAdapter(private val dataSet: List<String>):
 
     override fun onBindViewHolder(holder: StarterRecycleViewAdapter.ViewHolder, position: Int) {
         holder.title.text = dataSet[position]
+        holder.container.setOnClickListener{
+            val intent = Intent(ct, DishDetailActivity::class.java)
+            println("Clicked" + position);
+            intent.putExtra("dish_product", holder.title.text as String)
+            ct.startActivity(intent);
+        }
+
     }
 
     override fun getItemCount(): Int {
