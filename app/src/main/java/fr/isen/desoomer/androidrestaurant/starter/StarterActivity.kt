@@ -8,7 +8,7 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
-import fr.isen.desoomer.androidrestaurant.data.DishDetailData
+import fr.isen.desoomer.androidrestaurant.domain.DishDetailData
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityStarterBinding
 import org.json.JSONException
 import org.json.JSONObject
@@ -30,6 +30,7 @@ class StarterActivity : AppCompatActivity() {
         swipeRefreshLayout!!.setOnRefreshListener {
             swipeRefreshLayout!!.isRefreshing = false
             loadDataFromApi()
+            setTitle("Just Refreshed")
         };
     }
 

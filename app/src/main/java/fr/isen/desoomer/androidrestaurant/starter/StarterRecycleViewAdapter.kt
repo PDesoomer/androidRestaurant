@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.desoomer.androidrestaurant.DishDetailActivity
-import fr.isen.desoomer.androidrestaurant.data.Dish
+import fr.isen.desoomer.androidrestaurant.domain.Dish
 import fr.isen.desoomer.androidrestaurant.databinding.CardTestBinding
 
 class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct: Context) :
@@ -42,7 +42,8 @@ class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct:
         holder.container.setOnClickListener {
             val intent = Intent(ct, DishDetailActivity::class.java)
             println("Clicked" + position);
-            intent.putExtra("dish_product", holder.title.text as String)
+            intent.putExtra("dish_title", holder.title.text as String)
+            intent.putExtra("dish_price", holder.price.text as String)
             ct.startActivity(intent);
         }
 

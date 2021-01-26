@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="fr.isen.desoomer.androidrestaurant">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidRestaurant"
         android:usesCleartextTraffic="true">
-
         <activity android:name=".DishDetailActivity"></activity>
+        <activity android:name=".testAnimation" />
         <activity android:name=".starter.DessertActivity" />
         <activity android:name=".starter.DishActivity" />
         <activity android:name=".starter.StarterActivity" />
@@ -27,5 +29,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
+
 </manifest>

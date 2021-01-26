@@ -1,4 +1,4 @@
-package fr.isen.desoomer.androidrestaurant.data
+package fr.isen.desoomer.androidrestaurant.domain
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
