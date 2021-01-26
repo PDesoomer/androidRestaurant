@@ -3,6 +3,7 @@ package fr.isen.desoomer.androidrestaurant.starter
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -16,16 +17,22 @@ import org.json.JSONObject
 private lateinit var binding: ActivityStarterBinding
 
 class StarterActivity : AppCompatActivity() {
+    var swipeRefreshLayout: SwipeRefreshLayout? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStarterBinding.inflate(layoutInflater);
         setContentView(binding.root);
         binding.starterTitle.text = intent.getStringExtra("category");
-
         binding.categoryList.layoutManager = LinearLayoutManager(this)
-
         loadDataFromApi();
+
+        swipeRefreshLayout = binding.swipeRefreshLayout
+        swipeRefreshLayout!!.setOnRefreshListener {
+            swipeRefreshLayout!!.isRefreshing = false
+            loadDataFromApi()
+        };
     }
+
 
     fun loadDataFromApi() {
         val postUrl = "http://test.api.catering.bluecodegames.com/menu"
