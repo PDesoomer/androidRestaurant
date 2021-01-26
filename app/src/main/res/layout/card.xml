@@ -52,7 +52,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/oswald_bold"
-                android:text="TextView"
+                android:text="@string/card_price"
                 android:textColor="#40C4FF"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/dishPicture" />

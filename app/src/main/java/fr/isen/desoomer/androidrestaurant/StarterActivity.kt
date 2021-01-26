@@ -4,11 +4,11 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
-import com.android.volley.Response
-import com.android.volley.VolleyError
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import fr.isen.desoomer.androidrestaurant.data.Dish
+import fr.isen.desoomer.androidrestaurant.data.DishDetailData
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityStarterBinding
 import org.json.JSONException
 import org.json.JSONObject
@@ -24,11 +24,11 @@ class StarterActivity : AppCompatActivity() {
         binding.starterTitle.text = intent.getStringExtra("category");
 
         binding.categoryList.layoutManager = LinearLayoutManager(this)
-        binding.categoryList.adapter = StarterRecycleViewAdapter(
-            listOf("Julien", "Pierre", "Paul"),
-            this
-        );
 
+        loadDataFromApi();
+    }
+
+    fun loadDataFromApi() {
         val postUrl = "http://test.api.catering.bluecodegames.com/menu"
         val requestQueue = Volley.newRequestQueue(this)
         val postData = JSONObject()
@@ -42,8 +42,11 @@ class StarterActivity : AppCompatActivity() {
             postUrl,
             postData,
             { response ->
-                val json = Gson().fromJson(response["data"].toString(), List::class.java);
-                println(json);
+                val gson: DishDetailData =
+                    Gson().fromJson(response.toString(), DishDetailData::class.java)
+                gson.data.firstOrNull { it.category == "Entrées" }?.dish?.let {
+                    binding.categoryList.adapter = StarterRecycleViewAdapter(it, this);
+                }
             },
             { error ->
                 error.printStackTrace()
