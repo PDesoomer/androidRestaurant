@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import fr.isen.desoomer.androidrestaurant.DishDetailActivity
 import fr.isen.desoomer.androidrestaurant.data.Dish
 import fr.isen.desoomer.androidrestaurant.databinding.CardBinding
@@ -33,6 +34,7 @@ class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct:
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = dataSet[position].title
         holder.price.text = dataSet[position].getFormatedPrice().toString()
+        Picasso.get().load(dataSet[position].getFirstPicture()).resize(300, 300).into(holder.image);
         holder.container.setOnClickListener{
             val intent = Intent(ct, DishDetailActivity::class.java)
             println("Clicked" + position);
