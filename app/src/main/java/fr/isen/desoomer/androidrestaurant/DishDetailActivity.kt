@@ -25,6 +25,25 @@ class DishDetailActivity : AppCompatActivity() {
             binding.dishIngredients.append(" - ");
         }
         binding.pager.adapter = CarouselAdapter(this, dish.pictures)
+        reduceQuantity()
+        increaseQuantity()
+    }
+
+    fun reduceQuantity(){
+        binding.reduceQuantity.setOnClickListener {
+            var quantity = binding.quantityOrder.text.toString().toInt()
+            quantity--;
+            if (quantity < 0) quantity = 0;
+            binding.quantityOrder.setText(quantity.toString())
+        }
+    }
+
+    fun increaseQuantity(){
+        binding.addQuantity.setOnClickListener {
+            var quantity = binding.quantityOrder.text.toString().toInt()
+            quantity++;
+            binding.quantityOrder.setText(quantity.toString())
+        }
     }
 }
 

@@ -25,12 +25,11 @@ class CarouselFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-       arguments?.getString(ARG_OBJECT)?.let {
-           println(it);
-           Picasso.get()
-               .load(it)
-               .into(binding.carouselItem);
-       }
+        arguments?.getString(ARG_OBJECT)?.let {
+            Picasso.get()
+                .load(it)
+                .into(binding.carouselItem);
+        }
     }
 
     companion object {
