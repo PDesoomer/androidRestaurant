@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.squareup.picasso.Picasso
+import fr.isen.desoomer.androidrestaurant.R
 import fr.isen.desoomer.androidrestaurant.databinding.ItemBinding
 
 private lateinit var binding: ItemBinding
@@ -28,7 +29,10 @@ class CarouselFragment : Fragment() {
         arguments?.getString(ARG_OBJECT)?.let {
             Picasso.get()
                 .load(it)
-                .into(binding.carouselItem);
+                .into(binding.carouselItem)
+        }
+        if(arguments?.getString(ARG_OBJECT).isNullOrEmpty()){
+            Picasso.get().load(R.drawable.bar_768564_1920).into(binding.carouselItem);
         }
     }
 

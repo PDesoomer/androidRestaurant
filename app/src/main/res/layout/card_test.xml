@@ -22,12 +22,14 @@
                     android:id="@+id/dishPicture"
                     android:layout_width="403dp"
                     android:layout_height="182dp"
+                    android:layout_marginEnd="8dp"
                     android:adjustViewBounds="true"
+                    android:background="#CACACA"
                     android:scaleType="centerCrop"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_launcher_background" />
+                    tools:srcCompat="@drawable/bar_768564_1920" />
 
                 <TextView
                     android:id="@+id/starterCardTitle2"
