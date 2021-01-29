@@ -26,5 +26,19 @@ data class Dish(
         }
     }
 
+    fun getAllPicture() = if(pictures.isNotEmpty() && pictures[0].isNotEmpty()){
+        pictures[0]
+    } else {
+        null
+    }
+
+    fun getFirstIngredient(): String? {
+        return if(ingredients.isNotEmpty()){
+            ingredients[0].name
+        } else {
+            null;
+        }
+    }
+
 }
 

@@ -18,7 +18,7 @@ class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct:
     class ViewHolder(binding: CardTestBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.starterCardTitle2
         val price = binding.starterCardPrice2
-        val image = binding.imageView
+        val image = binding.dishPicture
         val container: ConstraintLayout = binding.root;
     }
 
@@ -44,6 +44,8 @@ class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct:
             println("Clicked" + position);
             intent.putExtra("dish_title", holder.title.text as String)
             intent.putExtra("dish_price", holder.price.text as String)
+            intent.putExtra("dish_picture", dataSet[position].getFirstPicture());
+            intent.putExtra("dish", dataSet[position])
             ct.startActivity(intent);
         }
 

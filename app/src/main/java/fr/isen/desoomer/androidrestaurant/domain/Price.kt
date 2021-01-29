@@ -1,6 +1,6 @@
 package fr.isen.desoomer.androidrestaurant.domain
 
-class Price {
+import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
-    val price: String = ""
-}
+data class Price(@SerializedName(value = "price") val price: String) : Serializable
