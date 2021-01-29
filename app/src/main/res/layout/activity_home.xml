@@ -29,10 +29,8 @@
 
     <Button
         android:id="@+id/starter_button"
-        android:layout_width="405dp"
+        android:layout_width="0dp"
         android:layout_height="106dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/pink"
         android:drawablePadding="8dp"
         android:fontFamily="@font/oswald_bold"
@@ -52,10 +50,8 @@
 
     <Button
         android:id="@+id/dish_button"
-        android:layout_width="405dp"
+        android:layout_width="0dp"
         android:layout_height="106dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:backgroundTint="@color/orange"
         android:fontFamily="@font/oswald_bold"
         android:insetTop="0dp"
@@ -71,10 +67,8 @@
 
     <Button
         android:id="@+id/dessert_button"
-        android:layout_width="405dp"
+        android:layout_width="0dp"
         android:layout_height="106dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         android:backgroundTint="@color/blue"
         android:fontFamily="@font/oswald_bold"

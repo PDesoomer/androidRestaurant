@@ -27,6 +27,15 @@ class DishDetailActivity : AppCompatActivity() {
         binding.pager.adapter = CarouselAdapter(this, dish.pictures)
         reduceQuantity()
         increaseQuantity()
+
+    }
+
+    fun updatePriceWithQuantity(){
+        var dish = intent.getSerializableExtra("dish") as Dish
+        var libeleString = binding.totalPrice.toString();
+        var priceString = dish.getPrice() * binding.quantityOrder.text.toString().toDouble()
+        var stringToDisplay =  "Total Price : " + priceString.toString() + "€"
+        binding.totalPrice.setText(stringToDisplay);
     }
 
     fun reduceQuantity(){
@@ -35,6 +44,7 @@ class DishDetailActivity : AppCompatActivity() {
             quantity--;
             if (quantity < 0) quantity = 0;
             binding.quantityOrder.setText(quantity.toString())
+            updatePriceWithQuantity()
         }
     }
 
@@ -43,6 +53,7 @@ class DishDetailActivity : AppCompatActivity() {
             var quantity = binding.quantityOrder.text.toString().toInt()
             quantity++;
             binding.quantityOrder.setText(quantity.toString())
+            updatePriceWithQuantity()
         }
     }
 }
