@@ -2,7 +2,9 @@ package fr.isen.desoomer.androidrestaurant
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.squareup.picasso.Picasso
+import fr.isen.desoomer.androidrestaurant.adapter.CarouselAdapter
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityDishDetailBinding
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityStarterBinding
 import fr.isen.desoomer.androidrestaurant.domain.Dish
@@ -18,12 +20,11 @@ class DishDetailActivity : AppCompatActivity() {
         val dish = intent.getSerializableExtra("dish") as Dish;
         setTitle(dish.title)
         binding.dishPrice.text = dish.getFormatedPrice();
-        for(i in dish.ingredients){
+        for (i in dish.ingredients) {
             binding.dishIngredients.append(i.name);
             binding.dishIngredients.append(" - ");
         }
-        Picasso.get().load(intent.getStringExtra("dish_picture"))
-            .into(binding.dishPicture);
+        binding.pager.adapter = CarouselAdapter(this, dish.pictures)
     }
 }
 

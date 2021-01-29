@@ -41,10 +41,6 @@ class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct:
 
         holder.container.setOnClickListener {
             val intent = Intent(ct, DishDetailActivity::class.java)
-            println("Clicked" + position);
-            intent.putExtra("dish_title", holder.title.text as String)
-            intent.putExtra("dish_price", holder.price.text as String)
-            intent.putExtra("dish_picture", dataSet[position].getFirstPicture());
             intent.putExtra("dish", dataSet[position])
             ct.startActivity(intent);
         }
