@@ -24,7 +24,7 @@ class StarterActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStarterBinding.inflate(layoutInflater);
         setContentView(binding.root);
-        binding.starterTitle.text = intent.getStringExtra("category");
+        setTitle(intent.getStringExtra("category"));
         binding.categoryList.layoutManager = LinearLayoutManager(this)
         loadDataFromApi();
 

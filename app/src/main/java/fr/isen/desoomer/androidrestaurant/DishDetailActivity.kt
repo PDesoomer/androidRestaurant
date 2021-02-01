@@ -1,6 +1,7 @@
 package fr.isen.desoomer.androidrestaurant
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.gson.GsonBuilder
@@ -10,12 +11,14 @@ import fr.isen.desoomer.androidrestaurant.databinding.ActivityDishDetailBinding
 import fr.isen.desoomer.androidrestaurant.domain.Cart
 import fr.isen.desoomer.androidrestaurant.domain.CartItem
 import fr.isen.desoomer.androidrestaurant.domain.Dish
+import com.airbnb.lottie.LottieAnimationView;
 import java.io.File
 
 
 private lateinit var binding: ActivityDishDetailBinding
 
 class DishDetailActivity : BaseActivity() {
+
     var swipeRefreshLayout: SwipeRefreshLayout? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,14 +36,19 @@ class DishDetailActivity : BaseActivity() {
         reduceQuantity()
         increaseQuantity()
 
-        
+        var cart_icon = findViewById<LottieAnimationView>(R.id.cart)
+        cart_icon.setOnClickListener(View.OnClickListener() {
+            cart_icon.playAnimation();
+            createJsonFile(dish, binding.quantityOrder.text.toString().toInt());
+        })
+
         binding.totalPrice.setOnClickListener {
             createJsonFile(dish, binding.quantityOrder.text.toString().toInt());
             displayMsg("Added to your cart")
         }
     }
 
-    public fun displayMsg(str: String) {
+    fun displayMsg(str: String) {
         Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
@@ -97,6 +105,7 @@ class DishDetailActivity : BaseActivity() {
         val count = cart.item.sumOf { it.quantity }
         val sharedPreferences = getSharedPreferences(APP_PREFS, MODE_PRIVATE)
         sharedPreferences.edit().putInt(CART_COUNT, count).apply()
+        invalidateOptionsMenu()
     }
 
     companion object {

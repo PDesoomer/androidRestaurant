@@ -28,10 +28,12 @@
 
     <TextView
         android:id="@+id/dish_ingredients"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="64dp"
+        android:fontFamily="sans-serif-medium"
         android:text="@string/ingredientsList"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,16 +75,29 @@
         app:layout_constraintStart_toEndOf="@+id/reduceQuantity"
         app:layout_constraintTop_toBottomOf="@+id/dish_ingredients" />
 
-    <Button
-        android:id="@+id/totalPrice"
-        android:layout_width="0dp"
-        android:layout_height="75dp"
-        android:backgroundTint="#FFAB40"
-        android:fontFamily="@font/oswald_bold"
-        android:text="@string/totalPrice"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/cart"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:rippleColor="#43BC5050" />
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="cart.json"
+        app:lottie_loop="false"
+        app:lottie_speed="1.25" />
+
+    <TextView
+        android:id="@+id/totalPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/oswald_bold"
+        android:text="@string/totalPrice"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quantityOrder" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -27,12 +27,15 @@ class CarouselFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         arguments?.getString(ARG_OBJECT)?.let {
-            Picasso.get()
-                .load(it)
-                .into(binding.carouselItem)
-        }
-        if(arguments?.getString(ARG_OBJECT).isNullOrEmpty()){
-            Picasso.get().load(R.drawable.bar_768564_1920).into(binding.carouselItem);
+            if (it.isEmpty()) {
+                Picasso.get()
+                    .load(R.drawable.bar_768564_1920)
+                    .into(binding.carouselItem)
+            } else {
+                Picasso.get()
+                    .load(it)
+                    .into(binding.carouselItem)
+            }
         }
     }
 

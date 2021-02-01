@@ -26,6 +26,9 @@ open class BaseActivity : AppCompatActivity() {
             val intent = Intent(this, CartDetailActivity::class.java)
             startActivity(intent)
         }
+
         return super.onCreateOptionsMenu(menu)
+        invalidateOptionsMenu()
     }
+
 }

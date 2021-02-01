@@ -12,7 +12,7 @@ import fr.isen.desoomer.androidrestaurant.starter.StarterActivity
 private lateinit var binding: ActivityHomeBinding;
 
 class HomeActivity : BaseActivity(){
-    public fun displayMsg(str: String) {
+    fun displayMsg(str: String) {
         Toast.makeText(this, "Clicked : " + str, Toast.LENGTH_SHORT).show();
     }
 

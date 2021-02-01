@@ -9,7 +9,7 @@
     <string name="adresseText">12 Rue de la soie</string>
     <string name="descriptionPlat">Dish description</string>
     <string name="card_price">12,90€</string>
-    <string name="ingredientsList">Ingredients :  </string>
+    <string name="ingredientsList">Ingredients :   </string>
     <string name="totalPrice">Total Price : </string>
     <string name="validate_cart">Order</string>
 </resources>

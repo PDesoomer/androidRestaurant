@@ -22,10 +22,8 @@ class DessertActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityStarterBinding.inflate(layoutInflater);
         setContentView(binding.root);
-        binding.starterTitle.text = intent.getStringExtra("category");
-
+        setTitle(intent.getStringExtra("category"));
         binding.categoryList.layoutManager = LinearLayoutManager(this)
-
         loadDataFromApi();
     }
 
@@ -43,7 +41,6 @@ class DessertActivity : BaseActivity() {
             postUrl,
             postData,
             { response ->
-                println(response);
                 val gson: DishDetailData =
                     Gson().fromJson(response.toString(), DishDetailData::class.java)
                 gson.data.firstOrNull { it.category == "Desserts" }?.dish?.let {

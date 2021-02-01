@@ -60,6 +60,7 @@ class CartDetailActivity : AppCompatActivity() {
         val count = cart.item.sumOf { it.quantity }
         val sharedPreferences = getSharedPreferences(DishDetailActivity.APP_PREFS, MODE_PRIVATE)
         sharedPreferences.edit().putInt(DishDetailActivity.CART_COUNT, count).apply()
+        invalidateOptionsMenu()
     }
 
 }
