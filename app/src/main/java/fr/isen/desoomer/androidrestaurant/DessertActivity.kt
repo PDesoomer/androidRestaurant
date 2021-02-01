@@ -1,12 +1,13 @@
 package fr.isen.desoomer.androidrestaurant.starter
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import fr.isen.desoomer.androidrestaurant.base.BaseActivity
+import fr.isen.desoomer.androidrestaurant.adapter.StarterRecycleViewAdapter
 import fr.isen.desoomer.androidrestaurant.domain.DishDetailData
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityStarterBinding
 import org.json.JSONException
@@ -15,7 +16,8 @@ import org.json.JSONObject
 
 private lateinit var binding: ActivityStarterBinding
 
-class DessertActivity : AppCompatActivity() {
+class DessertActivity : BaseActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityStarterBinding.inflate(layoutInflater);

@@ -12,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidRestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".DishDetailActivity"></activity>
-        <activity android:name=".testAnimation" />
+        <activity android:name=".CartDetailActivity"></activity>
+        <activity android:name=".DishDetailActivity" />
         <activity android:name=".starter.DessertActivity" />
         <activity android:name=".starter.DishActivity" />
         <activity android:name=".starter.StarterActivity" />

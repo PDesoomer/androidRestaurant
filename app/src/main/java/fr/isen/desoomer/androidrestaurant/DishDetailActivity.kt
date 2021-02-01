@@ -1,19 +1,20 @@
 package fr.isen.desoomer.androidrestaurant
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.google.gson.GsonBuilder
 import fr.isen.desoomer.androidrestaurant.adapter.CarouselAdapter
+import fr.isen.desoomer.androidrestaurant.base.BaseActivity
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityDishDetailBinding
 import fr.isen.desoomer.androidrestaurant.domain.Cart
+import fr.isen.desoomer.androidrestaurant.domain.CartItem
 import fr.isen.desoomer.androidrestaurant.domain.Dish
 import java.io.File
-import java.io.FileWriter
+
 
 private lateinit var binding: ActivityDishDetailBinding
 
-class DishDetailActivity : AppCompatActivity() {
+class DishDetailActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDishDetailBinding.inflate(layoutInflater);
@@ -29,8 +30,9 @@ class DishDetailActivity : AppCompatActivity() {
         reduceQuantity()
         increaseQuantity()
 
+
         binding.totalPrice.setOnClickListener {
-            createJsonFile(listOf(dish), binding.quantityOrder.text.toString().toInt());
+            createJsonFile(dish, binding.quantityOrder.text.toString().toInt());
             displayMsg("Added to your cart")
         }
     }
@@ -66,22 +68,38 @@ class DishDetailActivity : AppCompatActivity() {
         }
     }
 
-    fun createJsonFile(dish: List<Dish>, nbToAdd: Int) {
-        val cart = Cart(
-            dish,
-            binding.quantityOrder.text.toString().toInt()
-        )
+    fun createJsonFile(dish: Dish, nbToAdd: Int) {
         val gson = GsonBuilder().setPrettyPrinting().create()
-        val file = File(cacheDir.absolutePath + "fzefezhf.json");
+        val file = File(cacheDir.absolutePath + "/$CART_FILE");
         if (file.exists()) {
-           val json = gson.fromJson(file.readText(), Cart::class.java)
-            json.quantity = json.quantity?.plus(nbToAdd);
-            json.dish = dish
-            file.writeText(gson.toJson(json));
+            val json = gson.fromJson(file.readText(), Cart::class.java)
+            json.item.firstOrNull { it.dish == dish }?.let {
+                it.quantity = it.quantity?.plus(nbToAdd)
+            } ?: run {
+                json.item.add(CartItem(dish, nbToAdd))
+            }
+            saveInMemory(json, file)
         } else {
-            val jsonObject = gson.toJson(Cart(dish, nbToAdd))
-            file.writeText(jsonObject);
+            val cart = Cart(mutableListOf(CartItem(dish, nbToAdd)))
+            saveInMemory(cart, file)
         }
+    }
+
+    private fun saveInMemory(cart: Cart, file: File) {
+        saveDishCount(cart)
+        file.writeText(GsonBuilder().setPrettyPrinting().create().toJson(cart))
+    }
+
+    private fun saveDishCount(cart: Cart) {
+        val count = cart.item.sumOf { it.quantity }
+        val sharedPreferences = getSharedPreferences(APP_PREFS, MODE_PRIVATE)
+        sharedPreferences.edit().putInt(CART_COUNT, count).apply()
+    }
+
+    companion object {
+        const val APP_PREFS = "app_prefs"
+        const val CART_FILE = "user_cart.json"
+        const val CART_COUNT = "cart_count"
     }
 }
 

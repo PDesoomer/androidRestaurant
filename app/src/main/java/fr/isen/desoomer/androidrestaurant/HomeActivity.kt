@@ -1,9 +1,9 @@
 package fr.isen.desoomer.androidrestaurant
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import fr.isen.desoomer.androidrestaurant.base.BaseActivity
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityHomeBinding
 import fr.isen.desoomer.androidrestaurant.starter.DessertActivity
 import fr.isen.desoomer.androidrestaurant.starter.DishActivity
@@ -11,7 +11,7 @@ import fr.isen.desoomer.androidrestaurant.starter.StarterActivity
 
 private lateinit var binding: ActivityHomeBinding;
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity(){
     public fun displayMsg(str: String) {
         Toast.makeText(this, "Clicked : " + str, Toast.LENGTH_SHORT).show();
     }
@@ -47,5 +47,4 @@ class HomeActivity : AppCompatActivity() {
         super.onDestroy()
         println("Home Activity Destroyed");
     }
-
 }

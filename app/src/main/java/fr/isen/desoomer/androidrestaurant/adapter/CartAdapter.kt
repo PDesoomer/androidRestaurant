@@ -10,15 +10,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import fr.isen.desoomer.androidrestaurant.DishDetailActivity
 import fr.isen.desoomer.androidrestaurant.R
+import fr.isen.desoomer.androidrestaurant.databinding.CardBinding
 import fr.isen.desoomer.androidrestaurant.domain.Dish
-import fr.isen.desoomer.androidrestaurant.databinding.CardTestBinding
 
-class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct: Context) :
-    RecyclerView.Adapter<StarterRecycleViewAdapter.ViewHolder>() {
 
-    class ViewHolder(binding: CardTestBinding) : RecyclerView.ViewHolder(binding.root) {
-        val title = binding.starterCardTitle2
-        val price = binding.starterCardPrice2
+class CartAdapter(private val dataSet: List<Dish>, private val ct: Context) :
+    RecyclerView.Adapter<CartAdapter.ViewHolder>() {
+
+    class ViewHolder(binding: CardBinding) : RecyclerView.ViewHolder(binding.root) {
+        val title = binding.starterCardTitle
+        val price = binding.starterCardPrice
         val image = binding.dishPicture
         val container: ConstraintLayout = binding.root;
     }
@@ -28,7 +29,7 @@ class StarterRecycleViewAdapter(private val dataSet: List<Dish>, private val ct:
         viewType: Int
     ): ViewHolder {
         val itemBinding =
-            CardTestBinding.inflate(LayoutInflater.from(parent.context), parent, false);
+            CardBinding.inflate(LayoutInflater.from(parent.context), parent, false);
         return ViewHolder(itemBinding);
     }
 
