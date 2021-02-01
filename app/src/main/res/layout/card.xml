@@ -26,15 +26,6 @@
                 tools:srcCompat="@drawable/ic_launcher_background" />
 
             <TextView
-                android:id="@+id/dishDescription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/descriptionPlat"
-                app:layout_constraintStart_toEndOf="@+id/dishPicture"
-                app:layout_constraintTop_toBottomOf="@+id/starterCardTitle" />
-
-            <TextView
                 android:id="@+id/starterCardTitle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -57,6 +48,7 @@
                 android:fontFamily="@font/oswald_bold"
                 android:text="@string/card_price"
                 android:textColor="#FFAB40"
+                android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/dishPicture" />
 
@@ -70,6 +62,40 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24"
                 tools:srcCompat="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+            <TextView
+                android:id="@+id/quantity_product"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/oswald_bold"
+                android:text="TextView"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toTopOf="@+id/starterCardPrice"
+                app:layout_constraintStart_toEndOf="@+id/dishPicture" />
+
+            <TextView
+                android:id="@+id/unit_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/anton"
+                android:text="/unit"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/starterCardPrice" />
+
+            <TextView
+                android:id="@+id/totalPricePerItemInBasket"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="@font/anton"
+                android:text="TextView"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

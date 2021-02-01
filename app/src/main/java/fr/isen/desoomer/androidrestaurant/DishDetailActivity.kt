@@ -2,6 +2,7 @@ package fr.isen.desoomer.androidrestaurant
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.gson.GsonBuilder
 import fr.isen.desoomer.androidrestaurant.adapter.CarouselAdapter
 import fr.isen.desoomer.androidrestaurant.base.BaseActivity
@@ -15,6 +16,8 @@ import java.io.File
 private lateinit var binding: ActivityDishDetailBinding
 
 class DishDetailActivity : BaseActivity() {
+    var swipeRefreshLayout: SwipeRefreshLayout? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDishDetailBinding.inflate(layoutInflater);
@@ -30,7 +33,7 @@ class DishDetailActivity : BaseActivity() {
         reduceQuantity()
         increaseQuantity()
 
-
+        
         binding.totalPrice.setOnClickListener {
             createJsonFile(dish, binding.quantityOrder.text.toString().toInt());
             displayMsg("Added to your cart")
@@ -85,18 +88,19 @@ class DishDetailActivity : BaseActivity() {
         }
     }
 
-    private fun saveInMemory(cart: Cart, file: File) {
+    fun saveInMemory(cart: Cart, file: File) {
         saveDishCount(cart)
         file.writeText(GsonBuilder().setPrettyPrinting().create().toJson(cart))
     }
 
-    private fun saveDishCount(cart: Cart) {
+    fun saveDishCount(cart: Cart) {
         val count = cart.item.sumOf { it.quantity }
         val sharedPreferences = getSharedPreferences(APP_PREFS, MODE_PRIVATE)
         sharedPreferences.edit().putInt(CART_COUNT, count).apply()
     }
 
     companion object {
+
         const val APP_PREFS = "app_prefs"
         const val CART_FILE = "user_cart.json"
         const val CART_COUNT = "cart_count"

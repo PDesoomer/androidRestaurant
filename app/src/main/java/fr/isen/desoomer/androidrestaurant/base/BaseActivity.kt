@@ -16,30 +16,16 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_item_chart, menu)
 
-        val cart = menu?.findItem(R.id.action_cart);
-        cart?.setActionView(R.layout.cart_item_layout)
-        val notifCount = cart?.getActionView()
+        val cart = menu?.findItem(R.id.action_cart)?.actionView
 
         val sharedPreferences = getSharedPreferences(DishDetailActivity.APP_PREFS, MODE_PRIVATE)
-        var cartQuantity = sharedPreferences.getInt("cart_count", 0)
-        val textView = notifCount?.findViewById<TextView>(R.id.cart_badge)
-        textView?.setText("" + cartQuantity)
+        val cartQuantity = sharedPreferences.getInt("cart_count", 0)
+        cart?.findViewById<TextView>(R.id.cart_badge)?.text = cartQuantity.toString()
 
-        cart?.setOnMenuItemClickListener{
+        cart?.setOnClickListener{
             val intent = Intent(this, CartDetailActivity::class.java)
             startActivity(intent)
-            true
         }
         return super.onCreateOptionsMenu(menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.action_cart -> {
-                Log.d("test", "Text")
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 }

@@ -11,4 +11,5 @@
     <string name="card_price">12,90€</string>
     <string name="ingredientsList">Ingredients :  </string>
     <string name="totalPrice">Total Price : </string>
+    <string name="validate_cart">Order</string>
 </resources>

@@ -7,21 +7,26 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import fr.isen.desoomer.androidrestaurant.DishDetailActivity
 import fr.isen.desoomer.androidrestaurant.R
 import fr.isen.desoomer.androidrestaurant.databinding.CardBinding
-import fr.isen.desoomer.androidrestaurant.domain.Dish
+import fr.isen.desoomer.androidrestaurant.domain.Cart
+import fr.isen.desoomer.androidrestaurant.domain.CartItem
+import java.io.File
 
 
-class CartAdapter(private val dataSet: List<Dish>, private val ct: Context) :
+class CartAdapter(private val dataSet: MutableList<CartItem>, private val ct: Context) :
     RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
     class ViewHolder(binding: CardBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.starterCardTitle
         val price = binding.starterCardPrice
         val image = binding.dishPicture
+        val quantity = binding.quantityProduct
         val container: ConstraintLayout = binding.root;
+        val totalPrice = binding.totalPricePerItemInBasket;
     }
 
     override fun onCreateViewHolder(
@@ -34,18 +39,20 @@ class CartAdapter(private val dataSet: List<Dish>, private val ct: Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.title.text = dataSet[position].title
-        holder.price.text = dataSet[position].getFormatedPrice().toString()
+        holder.title.text = dataSet[position].dish.title
+        holder.price.text = dataSet[position].dish.getFormatedPrice().toString()
+        holder.quantity.text = "Quantity : " + dataSet[position].quantity.toString();
+        holder.totalPrice.text = (dataSet[position].dish.getPrice() * dataSet[position].quantity).toString() + "€"
 
         Picasso.get()
-            .load(dataSet[position].getFirstPicture())
+            .load(dataSet[position].dish.getFirstPicture())
             .transform(BlurTransformation(ct))
             .placeholder(R.drawable.bar_768564_1920)
             .into(holder.image);
 
         holder.container.setOnClickListener {
             val intent = Intent(ct, DishDetailActivity::class.java)
-            intent.putExtra("dish", dataSet[position])
+            intent.putExtra("dish", dataSet[position].dish)
             ct.startActivity(intent);
         }
 
@@ -55,5 +62,14 @@ class CartAdapter(private val dataSet: List<Dish>, private val ct: Context) :
         return dataSet.size;
     }
 
+    fun getItem(): MutableList<CartItem>{
+        return dataSet
+    }
 
+    fun removeAt(position: Int) {
+        dataSet.removeAt(position)
+        notifyItemRemoved(position)
+    }
 }
+
+

@@ -6,10 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".CartDetailActivity">
 
+    <Button
+        android:id="@+id/cart_validate_button"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:backgroundTint="#FFAB40"
+        android:fontFamily="@font/oswald_bold"
+        android:text="@string/validate_cart"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cartDetailListView"
+        app:rippleColor="#FFAB40" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/cartDetailListView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="110dp" />
+        android:layout_marginBottom="128dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
