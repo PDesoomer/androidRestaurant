@@ -79,6 +79,7 @@ class LoginFragment : Fragment() {
                 } else {
                     val sharedPreferences = this.activity?.getSharedPreferences(DishDetailActivity.APP_PREFS, AppCompatActivity.MODE_PRIVATE)
                     sharedPreferences?.edit()?.putInt("user_id", gson.user.id)?.apply()
+                    displayMsg("successfully logged in ! ")
                 }
             },
             { error ->

@@ -1,8 +1,11 @@
 package fr.isen.desoomer.androidrestaurant
 
 import SwipeToDeleteCallback
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.widget.SimpleAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -15,18 +18,34 @@ import fr.isen.desoomer.androidrestaurant.domain.Cart
 import fr.isen.desoomer.androidrestaurant.domain.CartItem
 import fr.isen.desoomer.androidrestaurant.domain.Dish
 import fr.isen.desoomer.androidrestaurant.starter.CartAdapter
+import fr.isen.desoomer.androidrestaurant.starter.StarterActivity
 import java.io.File
 
 
 private lateinit var binding: ActivityCartDetailBinding
 
 class CartDetailActivity : AppCompatActivity() {
+
+    fun displayMsg(str: String) {
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCartDetailBinding.inflate(layoutInflater);
         binding.cartDetailListView.layoutManager = LinearLayoutManager(this)
 
-
+        binding.cartValidateButton.setOnClickListener{
+            if(getSharedPreferences(DishDetailActivity.APP_PREFS, MODE_PRIVATE).contains("user_id")){
+                val intent = Intent(this, OrderActivity::class.java)
+                val adapter = binding.cartDetailListView.adapter as CartAdapter
+                intent.putExtra("Cart", Cart(adapter.getItem()))
+                startActivity(intent);
+            } else {
+                val intent = Intent(this, AuthenticationActivity::class.java)
+                startActivity(intent)
+            }
+        }
 
         setContentView(binding.root);
         val file = File(cacheDir.absolutePath + "/${DishDetailActivity.CART_FILE}");
