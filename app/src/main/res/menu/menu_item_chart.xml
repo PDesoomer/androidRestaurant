@@ -17,7 +17,7 @@
         android:icon="@drawable/ic_baseline_person_24"
         android:longClickable="true"
         android:title="Cart"
-        android:visibility="gone"
+        android:visibility="visible"
         android:visible="false"
         app:actionLayout="@layout/login_item_layout"
         app:showAsAction="always" />

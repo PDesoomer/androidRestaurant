@@ -1,22 +1,19 @@
 package fr.isen.desoomer.androidrestaurant.adapter
 
-import fr.isen.desoomer.androidrestaurant.transformation.BlurTransformation
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
+import com.google.gson.Gson
 import fr.isen.desoomer.androidrestaurant.DishDetailActivity
-import fr.isen.desoomer.androidrestaurant.R
-import fr.isen.desoomer.androidrestaurant.databinding.CardBinding
-import fr.isen.desoomer.androidrestaurant.domain.Dish
-import fr.isen.desoomer.androidrestaurant.databinding.CardTestBinding
 import fr.isen.desoomer.androidrestaurant.databinding.HistoryCardBinding
 import fr.isen.desoomer.androidrestaurant.domain.Cart
+import fr.isen.desoomer.androidrestaurant.domain.Order
+import fr.isen.desoomer.androidrestaurant.domain.OrderData
 
-class HistoryAdapter(private val dataSet: Cart, private val ct: Context) :
+class HistoryAdapter(private val dataSet: List<Order>, private val ct: Context) :
     RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
     class ViewHolder(binding: HistoryCardBinding) : RecyclerView.ViewHolder(binding.root) {
@@ -31,16 +28,15 @@ class HistoryAdapter(private val dataSet: Cart, private val ct: Context) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.title.text = dataSet.item.size.toString()
-        println("Value : " + dataSet.item.size.toString())
-        holder.container.setOnClickListener {
-            val intent = Intent(ct, DishDetailActivity::class.java)
-            intent.putExtra("order", dataSet.item[position])
-            ct.startActivity(intent);
+        var text :String = ""
+        val orderCart = Gson().fromJson(dataSet[position].message, Cart::class.java) as Cart
+        for(c in orderCart.item){
+            text += " | " + c.dish.title + " x " + c.quantity + " | "
         }
+        holder.title.text = text
     }
 
     override fun getItemCount(): Int {
-        return dataSet.item.size
+        return dataSet.size
     }
 }

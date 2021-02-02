@@ -21,7 +21,7 @@ class CartAdapter(private val dataSet: MutableList<CartItem>, private val ct: Co
     RecyclerView.Adapter<CartAdapter.ViewHolder>() {
 
     class ViewHolder(binding: CardBinding) : RecyclerView.ViewHolder(binding.root) {
-        val title = binding.starterCardTitle
+        val title = binding.numberOfDishOrdered
         val image = binding.dishPicture
         val quantity = binding.quantityProduct
         val container: ConstraintLayout = binding.root;

@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -23,13 +24,15 @@ class UserPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityUserPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.recyclerHistory.layoutManager = LinearLayoutManager(this)
+
         val sharedPreferences = getSharedPreferences(DishDetailActivity.APP_PREFS, MODE_PRIVATE)
-        if(sharedPreferences.contains("user_id")){
+        if (sharedPreferences.contains("user_id")) {
             val user_id = sharedPreferences.getInt("user_id", 0)
             checkPreviousOrders(user_id)
         }
 
-        binding.logout.setOnClickListener{
+        binding.logout.setOnClickListener {
             sharedPreferences.edit().remove("user_id").commit();
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
@@ -54,8 +57,8 @@ class UserPageActivity : AppCompatActivity() {
             postData,
             { response ->
                 val gson: OrderData = Gson().fromJson(response.toString(), OrderData::class.java)
-                Log.i("Retour", ""+ gson.order[0].getCart())
-                gson.order.firstOrNull()?.getCart()?.let{
+                Log.i("Retour", "" + gson.order[0].getCart())
+                gson.order?.let {
                     binding.recyclerHistory.adapter = HistoryAdapter(it, this)
                 }
             },
