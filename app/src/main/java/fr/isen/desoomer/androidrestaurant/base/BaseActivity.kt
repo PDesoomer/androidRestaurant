@@ -35,7 +35,6 @@ open class BaseActivity : AppCompatActivity() {
                 val intent = Intent(this, UserPageActivity::class.java)
                 startActivity(intent)
             }
-            invalidateOptionsMenu()
         }
 
 

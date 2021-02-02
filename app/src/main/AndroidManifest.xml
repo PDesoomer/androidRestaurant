@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidRestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UserPageActivity"></activity>
+        <activity android:name=".MapActivity"></activity>
+        <activity android:name=".UserPageActivity" />
         <activity android:name=".OrderActivity" />
         <activity android:name=".AuthenticationActivity" />
         <activity
@@ -31,6 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data android:name="com.google.android.geo.API_KEY" android:value="your API key"/>
 
         <meta-data
             android:name="preloaded_fonts"

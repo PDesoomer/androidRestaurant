@@ -10,10 +10,15 @@ import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import fr.isen.desoomer.androidrestaurant.databinding.ActivityOrderBinding
+import fr.isen.desoomer.androidrestaurant.domain.Cart
 import fr.isen.desoomer.androidrestaurant.domain.UserData
 import org.json.JSONException
 import org.json.JSONObject
+import java.io.File
+import java.lang.Thread.sleep
+import kotlin.reflect.typeOf
 
 private lateinit var binding: ActivityOrderBinding;
 class OrderActivity : AppCompatActivity() {
@@ -35,10 +40,12 @@ class OrderActivity : AppCompatActivity() {
         val postUrl = "http://test.api.catering.bluecodegames.com/user/order"
         val requestQueue = Volley.newRequestQueue(this)
         val postData = JSONObject()
+        val cart = GsonBuilder().create().toJson(intent.getSerializableExtra("Cart") as Cart)
+
         try {
             postData.put("id_shop", "1")
             postData.put("id_user", getSharedPreferences(DishDetailActivity.APP_PREFS, MODE_PRIVATE).getInt("user_id", 0))
-            postData.put("msg", intent.getSerializableExtra("Cart"))
+            postData.put("msg", cart)
         } catch (e: JSONException) {
             e.printStackTrace()
         }

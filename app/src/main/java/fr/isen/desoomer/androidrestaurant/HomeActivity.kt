@@ -41,10 +41,16 @@ class HomeActivity : BaseActivity(){
             startActivity(intent);
             displayMsg("Dessert Button");
         }
+
+        invalidateOptionsMenu()
     }
 
     override fun onDestroy() {
         super.onDestroy()
         println("Home Activity Destroyed");
+    }
+
+    override fun onResume() {
+        super.onResume()
     }
 }

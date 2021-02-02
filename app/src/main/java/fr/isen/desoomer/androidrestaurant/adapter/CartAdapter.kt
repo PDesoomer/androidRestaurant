@@ -22,7 +22,6 @@ class CartAdapter(private val dataSet: MutableList<CartItem>, private val ct: Co
 
     class ViewHolder(binding: CardBinding) : RecyclerView.ViewHolder(binding.root) {
         val title = binding.starterCardTitle
-        val price = binding.starterCardPrice
         val image = binding.dishPicture
         val quantity = binding.quantityProduct
         val container: ConstraintLayout = binding.root;
@@ -40,7 +39,6 @@ class CartAdapter(private val dataSet: MutableList<CartItem>, private val ct: Co
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.title.text = dataSet[position].dish.title
-        holder.price.text = dataSet[position].dish.getFormatedPrice().toString()
         holder.quantity.text = "Quantity : " + dataSet[position].quantity.toString();
         holder.totalPrice.text = (dataSet[position].dish.getPrice() * dataSet[position].quantity).toString() + "€"
 
