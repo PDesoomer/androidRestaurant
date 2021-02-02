@@ -19,4 +19,31 @@
         app:lottie_loop="false"
         app:lottie_speed="1.25" />
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/delivering"
+        android:layout_width="405dp"
+        android:layout_height="425dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="delivering.json"
+        app:lottie_loop="false"
+        app:lottie_speed="1.25" />
+
+    <TextView
+        android:id="@+id/order_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:fontFamily="@font/oswald_bold"
+        android:text="TextView"
+        android:textColor="#FFAB40"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
