@@ -20,16 +20,6 @@
         android:fontFamily="@font/oswald_bold"
         android:layout_marginTop="60dp"/>
 
-    <TextView
-        android:id="@+id/tv_subtitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/tag"
-        android:textSize="17sp"
-        android:fontFamily="@font/oswald_bold"
-        android:layout_marginStart="25dp"
-        android:layout_marginBottom="50dp"/>
-
     <EditText
         android:id="@+id/et_name"
         android:layout_width="match_parent"
@@ -42,6 +32,20 @@
         android:inputType="textPersonName"
         android:fontFamily="@font/oswald_bold"
         android:background="@drawable/et_custom"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/et_lastname"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/et_custom"
+        android:fontFamily="@font/oswald_bold"
+        android:hint="@string/lastname"
+        android:inputType="textPersonName"
+        android:padding="15dp"
         android:textSize="15sp" />
 
     <EditText
@@ -73,17 +77,18 @@
         android:textSize="15sp" />
 
     <EditText
-        android:id="@+id/et_repassword"
+        android:id="@+id/etAdresse"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="@string/re_type_password"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:padding="15dp"
-        android:fontFamily="@font/oswald_bold"
-        android:inputType="textPassword"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/et_custom"
-        android:textSize="15sp" />
+        android:ems="10"
+        android:fontFamily="@font/oswald_bold"
+        android:hint="@string/adresse"
+        android:inputType="textPostalAddress"
+        android:padding="15dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
