@@ -3,6 +3,8 @@ package fr.isen.desoomer.androidrestaurant
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
+import com.airbnb.lottie.LottieAnimationView
 import com.android.volley.Request
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
@@ -16,6 +18,8 @@ class OrderActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_order)
         sendOrderToAPI()
+        var cart_icon = findViewById<LottieAnimationView>(R.id.waiting_for_delivery)
+        cart_icon.playAnimation()
     }
 
     fun sendOrderToAPI() {
@@ -35,6 +39,8 @@ class OrderActivity : AppCompatActivity() {
             postData,
             { response ->
                 Log.i("Reponse : ", ""+response)
+                var cart_icon = findViewById<LottieAnimationView>(R.id.waiting_for_delivery)
+                cart_icon.visibility = View.GONE
             },
             { error ->
                 error.printStackTrace()

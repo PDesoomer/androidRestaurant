@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".OrderActivity">
 
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/waiting_for_delivery"
+        android:layout_width="405dp"
+        android:layout_height="425dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="false"
+        app:lottie_fileName="waiting_for_delivery.json"
+        app:lottie_loop="false"
+        app:lottie_speed="1.25" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
