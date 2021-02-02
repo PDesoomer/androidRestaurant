@@ -12,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidRestaurant"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CartDetailActivity"></activity>
+        <activity android:name=".AuthenticationActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/Theme.AndroidRestaurant.NoActionBar" />
+        <activity android:name=".CartDetailActivity" />
         <activity android:name=".DishDetailActivity" />
         <activity android:name=".starter.DessertActivity" />
         <activity android:name=".starter.DishActivity" />
