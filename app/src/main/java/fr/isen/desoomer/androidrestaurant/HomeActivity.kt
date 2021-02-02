@@ -36,7 +36,7 @@ class HomeActivity : BaseActivity(){
         }
 
         binding.dessertButton.setOnClickListener{
-            val intent = Intent(this, AuthenticationActivity::class.java)
+            val intent = Intent(this, DessertActivity::class.java)
             intent.putExtra("category", "Dessert")
             startActivity(intent);
             displayMsg("Dessert Button");

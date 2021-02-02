@@ -1,7 +1,6 @@
 package fr.isen.desoomer.androidrestaurant.base
 
 import android.content.Intent
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
@@ -9,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import fr.isen.desoomer.androidrestaurant.CartDetailActivity
 import fr.isen.desoomer.androidrestaurant.DishDetailActivity
 import fr.isen.desoomer.androidrestaurant.R
+import fr.isen.desoomer.androidrestaurant.UserPageActivity
 
 
 open class BaseActivity : AppCompatActivity() {
@@ -27,8 +27,23 @@ open class BaseActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        if(sharedPreferences.contains("user_id")){
+            val userButton = menu?.findItem(R.id.user_icon)
+            userButton?.isVisible = true
+            val user = menu?.findItem(R.id.user_icon)?.actionView
+            user?.setOnClickListener{
+                val intent = Intent(this, UserPageActivity::class.java)
+                startActivity(intent)
+            }
+            invalidateOptionsMenu()
+        }
+
+
         return super.onCreateOptionsMenu(menu)
         invalidateOptionsMenu()
     }
+
+
+
 
 }

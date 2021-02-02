@@ -1,5 +1,6 @@
 package fr.isen.desoomer.androidrestaurant
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -17,6 +18,7 @@ import fr.isen.desoomer.androidrestaurant.databinding.FragmentLoginBinding
 import fr.isen.desoomer.androidrestaurant.databinding.FragmentRegisterBinding
 import fr.isen.desoomer.androidrestaurant.domain.User
 import fr.isen.desoomer.androidrestaurant.domain.UserData
+import fr.isen.desoomer.androidrestaurant.starter.DessertActivity
 import org.json.JSONException
 import org.json.JSONObject
 
@@ -80,6 +82,9 @@ class LoginFragment : Fragment() {
                     val sharedPreferences = this.activity?.getSharedPreferences(DishDetailActivity.APP_PREFS, AppCompatActivity.MODE_PRIVATE)
                     sharedPreferences?.edit()?.putInt("user_id", gson.user.id)?.apply()
                     displayMsg("successfully logged in ! ")
+                    val intent = Intent(activity?.applicationContext, CartDetailActivity::class.java)
+                    startActivity(intent)
+
                 }
             },
             { error ->

@@ -12,13 +12,13 @@
         android:id="@+id/tv_logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register"
-        android:textAlignment="center"
-        android:textSize="50sp"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="60dp"
         android:layout_marginBottom="5dp"
         android:fontFamily="@font/oswald_bold"
-        android:layout_marginTop="60dp"/>
+        android:text="@string/register"
+        android:textAlignment="center"
+        android:textSize="50sp" />
 
     <EditText
         android:id="@+id/et_name"

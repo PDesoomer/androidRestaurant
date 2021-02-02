@@ -11,4 +11,16 @@
         app:actionLayout="@layout/cart_item_layout"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/user_icon"
+        android:clickable="true"
+        android:icon="@drawable/ic_baseline_person_24"
+        android:longClickable="true"
+        android:title="Cart"
+        android:visibility="gone"
+        android:visible="false"
+        app:actionLayout="@layout/login_item_layout"
+        app:showAsAction="always" />
+
+
 </menu>
