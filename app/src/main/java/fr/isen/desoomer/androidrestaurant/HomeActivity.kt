@@ -13,7 +13,7 @@ private lateinit var binding: ActivityHomeBinding;
 
 class HomeActivity : BaseActivity(){
     fun displayMsg(str: String) {
-        Toast.makeText(this, "Clicked : " + str, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, str, Toast.LENGTH_SHORT).show();
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -24,9 +24,21 @@
                 android:fontFamily="@font/oswald_bold"
                 android:text="TextView"
                 android:textSize="24sp"
+                app:layout_constraintEnd_toStartOf="@+id/priceHistory"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/priceHistory"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/oswald_bold"
+                android:text="TextView"
+                android:textColor="#FF6E40"
+                android:textSize="24sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -90,44 +90,46 @@
         android:inputType="textPostalAddress"
         android:padding="15dp" />
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="match_parent">
 
         <Button
             android:id="@+id/btn_register"
             android:layout_width="match_parent"
             android:layout_height="70dp"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginBottom="30dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="32dp"
             android:background="@drawable/btn_custom"
             android:backgroundTint="#FFAB40"
             android:fontFamily="@font/oswald_bold"
             android:text="@string/register"
             android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:rippleColor="#FFAB40" />
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/ic_arrow_left"
-            android:layout_above="@id/swipeLeft"
-            android:layout_centerHorizontal="true"/>
+            app:layout_constraintBottom_toTopOf="@+id/swipeLeft"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/swipeLeft"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/oswald_bold"
             android:text="@string/swipe_right_for_login"
             android:textSize="15sp"
-            android:fontFamily="@font/oswald_bold"
-            android:layout_centerHorizontal="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="20dp"/>
-
-    </RelativeLayout>
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </LinearLayout>

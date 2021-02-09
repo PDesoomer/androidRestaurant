@@ -19,6 +19,7 @@ class HistoryAdapter(private val dataSet: List<Order>, private val ct: Context) 
     class ViewHolder(binding: HistoryCardBinding) : RecyclerView.ViewHolder(binding.root) {
         val container: ConstraintLayout = binding.root;
         val title = binding.numberOfDishOrdered
+        val price = binding.priceHistory
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -29,11 +30,15 @@ class HistoryAdapter(private val dataSet: List<Order>, private val ct: Context) 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var text :String = ""
+        var price: Double = 0.0
         val orderCart = Gson().fromJson(dataSet[position].message, Cart::class.java) as Cart
         for(c in orderCart.item){
             text += " | " + c.dish.title + " x " + c.quantity + " | "
+            price += c.dish.getPrice()
         }
+        println("Price : " + price)
         holder.title.text = text
+        holder.price.text = price.toString() + "€"
     }
 
     override fun getItemCount(): Int {
