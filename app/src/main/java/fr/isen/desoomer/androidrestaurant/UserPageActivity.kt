@@ -59,6 +59,7 @@ class UserPageActivity : AppCompatActivity() {
                 val gson: OrderData = Gson().fromJson(response.toString(), OrderData::class.java)
                 Log.i("Retour", "" + gson.order[0].getCart())
                 gson.order?.let {
+                    println(it)
                     binding.recyclerHistory.adapter = HistoryAdapter(it, this)
                 }
             },

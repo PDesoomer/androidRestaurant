@@ -6,7 +6,7 @@
     <string name="dessert_button">Dessert</string>
     <string name="starter_page_title">Starter page</string>
     <string name="app_title">STEAKHOUSE</string>
-    <string name="adresseText">12 Rue de la soie</string>
+    <string name="adresseText">12 Rue de la soie (open in Google Maps)</string>
     <string name="descriptionPlat">Dish description</string>
     <string name="card_price">12,90€</string>
     <string name="ingredientsList">Ingredients :   </string>
