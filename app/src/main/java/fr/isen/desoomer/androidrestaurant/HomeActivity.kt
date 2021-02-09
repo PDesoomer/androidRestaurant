@@ -42,6 +42,10 @@ class HomeActivity : BaseActivity(){
             displayMsg("Dessert Button");
         }
 
+        binding.adresseText.setOnClickListener{
+            startActivity(Intent(this, MapsActivity::class.java))
+        }
+
         invalidateOptionsMenu()
     }
 
